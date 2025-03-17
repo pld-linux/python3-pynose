@@ -10,7 +10,7 @@ Version:	1.5.4
 Release:	2
 License:	LGPL
 Group:		Libraries/Python
-Source0:	https://pypi.debian.net/%{pyname}}/%{pyname}-%{version}.tar.gz
+Source0:	https://pypi.debian.net/%{pyname}/%{pyname}-%{version}.tar.gz
 # Source0-md5:	f9ee9d97377b9d9132dcff559f811710
 URL:		https://pypi.org/project/pynose/
 BuildRequires:	python3-build
