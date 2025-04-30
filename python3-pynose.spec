@@ -7,7 +7,7 @@
 Summary:	pynose is an updated version of nose, originally made by Jason Pellerin
 Name:		python3-%{pyname}
 Version:	1.5.4
-Release:	2
+Release:	3
 License:	LGPL
 Group:		Libraries/Python
 Source0:	https://pypi.debian.net/%{pyname}/%{pyname}-%{version}.tar.gz
@@ -29,6 +29,7 @@ BuildRequires:	sphinx-pdg-3
 Requires:	python3-modules >= 1:3.2
 Obsoletes:	python3-nose < %{version}-%{release}
 Provides:	python3-nose = %{version}-%{release}
+Provides:	python%{py3_ver}dist(nose) = %{version}-%{release}
 Conflicts:	python-nose < 1.3.7-15
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
