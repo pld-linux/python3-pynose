@@ -41,6 +41,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %py3_install_pyproject
 
+ln -sf nosetests $RPM_BUILD_ROOT%{_bindir}/nosetests-%{py3_ver}
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -48,6 +50,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS README.md
 %attr(755,root,root) %{_bindir}/nosetests
+%attr(755,root,root) %{_bindir}/nosetests-%{py3_ver}
 %attr(755,root,root) %{_bindir}/pynose
 %{py3_sitescriptdir}/nose
 %{py3_sitescriptdir}/pynose-%{version}.dist-info
