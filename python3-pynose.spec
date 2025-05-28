@@ -2,7 +2,7 @@ Summary:	pynose - an updated version of nose
 Summary(pl.UTF-8):	pynose - uaktualniona wesja nose
 Name:		python3-pynose
 Version:	1.5.4
-Release:	3
+Release:	4
 License:	LGPL v2.1
 Group:		Libraries/Python
 Source0:	https://pypi.debian.net/pynose/pynose-%{version}.tar.gz
