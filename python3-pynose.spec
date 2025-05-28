@@ -1,8 +1,3 @@
-#
-# Conditional build:
-%bcond_with	doc	# API documentation
-%bcond_with	tests	# unit tests
-
 Summary:	pynose - an updated version of nose
 Summary(pl.UTF-8):	pynose - uaktualniona wesja nose
 Name:		python3-pynose
@@ -18,15 +13,8 @@ BuildRequires:	python3-installer
 BuildRequires:	python3-modules >= 1:3.7
 BuildRequires:	python3-setuptools >= 1:68.0.0
 BuildRequires:	python3-wheel >= 0.42
-%if %{with tests}
-#BuildRequires:	python3-
-#BuildRequires:	python3-pytest
-%endif
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 2.044
-%if %{with doc}
-BuildRequires:	sphinx-pdg-3
-%endif
 Requires:	python3-modules >= 1:3.7
 Obsoletes:	python3-nose < %{version}-%{release}
 Provides:	python3-nose = %{version}-%{release}
@@ -42,36 +30,11 @@ pynose fixes nose to extend unittest and make testing easier.
 pynose poprawia nose, aby rozszerzyć możliwości modułu unittest i
 ułatwić testowanie.
 
-%package apidocs
-Summary:	API documentation for Python nose module from pynose package
-Summary(pl.UTF-8):	Dokumentacja API modułu Pythona nose z pakietu pynose
-Group:		Documentation
-
-%description apidocs
-API documentation for Python nose module from pynose package.
-
-%description apidocs -l pl.UTF-8
-Dokumentacja API modułu Pythona nose z pakietu pynose.
-
 %prep
 %setup -q -n pynose-%{version}
 
 %build
 %py3_build_pyproject
-
-%if %{with tests}
-%{__python3} -m zipfile -e build-3/*.whl build-3-test
-# use explicit plugins list for reliable builds (delete PYTEST_PLUGINS if empty)
-PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 \
-PYTEST_PLUGINS= \
-%{__python3} -m pytest -o pythonpath="$PWD/build-3-test" tests
-%endif
-
-%if %{with doc}
-%{__make} -C docs html \
-	SPHINXBUILD=sphinx-build-3
-rm -rf docs/_build/html/_sources
-%endif
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -88,9 +51,3 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/pynose
 %{py3_sitescriptdir}/nose
 %{py3_sitescriptdir}/pynose-%{version}.dist-info
-
-%if %{with doc}
-%files apidocs
-%defattr(644,root,root,755)
-%doc docs/_build/html/*
-%endif
