@@ -8,14 +8,15 @@ Summary(pl.UTF-8):	pynose - uaktualniona wesja nose
 Name:		python3-pynose
 Version:	1.5.4
 Release:	3
-License:	LGPL
+License:	LGPL v2.1
 Group:		Libraries/Python
 Source0:	https://pypi.debian.net/pynose/pynose-%{version}.tar.gz
 # Source0-md5:	f9ee9d97377b9d9132dcff559f811710
 URL:		https://pypi.org/project/pynose/
 BuildRequires:	python3-build
 BuildRequires:	python3-installer
-BuildRequires:	python3-modules >= 1:3.2
+BuildRequires:	python3-modules >= 1:3.7
+BuildRequires:	python3-setuptools >= 1:68.0.0
 BuildRequires:	python3-wheel >= 0.42
 %if %{with tests}
 #BuildRequires:	python3-
@@ -26,7 +27,7 @@ BuildRequires:	rpmbuild(macros) >= 2.044
 %if %{with doc}
 BuildRequires:	sphinx-pdg-3
 %endif
-Requires:	python3-modules >= 1:3.2
+Requires:	python3-modules >= 1:3.7
 Obsoletes:	python3-nose < %{version}-%{release}
 Provides:	python3-nose = %{version}-%{release}
 Provides:	python%{py3_ver}dist(nose) = %{version}-%{release}
