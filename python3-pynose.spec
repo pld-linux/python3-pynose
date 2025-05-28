@@ -1,16 +1,16 @@
+#
 # Conditional build:
 %bcond_with	doc	# API documentation
 %bcond_with	tests	# unit tests
 
-%define		module	nose
-%define		pyname	pynose
-Summary:	pynose is an updated version of nose, originally made by Jason Pellerin
-Name:		python3-%{pyname}
+Summary:	pynose - an updated version of nose
+Summary(pl.UTF-8):	pynose - uaktualniona wesja nose
+Name:		python3-pynose
 Version:	1.5.4
 Release:	3
 License:	LGPL
 Group:		Libraries/Python
-Source0:	https://pypi.debian.net/%{pyname}/%{pyname}-%{version}.tar.gz
+Source0:	https://pypi.debian.net/pynose/pynose-%{version}.tar.gz
 # Source0-md5:	f9ee9d97377b9d9132dcff559f811710
 URL:		https://pypi.org/project/pynose/
 BuildRequires:	python3-build
@@ -37,19 +37,23 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 pynose fixes nose to extend unittest and make testing easier.
 
+%description -l pl.UTF-8
+pynose poprawia nose, aby rozszerzyć możliwości modułu unittest i
+ułatwić testowanie.
+
 %package apidocs
-Summary:	API documentation for Python %{module} module
-Summary(pl.UTF-8):	Dokumentacja API modułu Pythona %{module}
+Summary:	API documentation for Python nose module from pynose package
+Summary(pl.UTF-8):	Dokumentacja API modułu Pythona nose z pakietu pynose
 Group:		Documentation
 
 %description apidocs
-API documentation for Python %{module} module.
+API documentation for Python nose module from pynose package.
 
 %description apidocs -l pl.UTF-8
-Dokumentacja API modułu Pythona %{module}.
+Dokumentacja API modułu Pythona nose z pakietu pynose.
 
 %prep
-%setup -q -n %{pyname}-%{version}
+%setup -q -n pynose-%{version}
 
 %build
 %py3_build_pyproject
@@ -81,8 +85,8 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS README.md
 %attr(755,root,root) %{_bindir}/nosetests
 %attr(755,root,root) %{_bindir}/pynose
-%{py3_sitescriptdir}/%{module}
-%{py3_sitescriptdir}/%{pyname}-%{version}.dist-info
+%{py3_sitescriptdir}/nose
+%{py3_sitescriptdir}/pynose-%{version}.dist-info
 
 %if %{with doc}
 %files apidocs
