@@ -18,7 +18,7 @@ BuildRequires:	rpmbuild(macros) >= 2.044
 Requires:	python3-modules >= 1:3.7
 Obsoletes:	python3-nose < %{version}-%{release}
 Provides:	python3-nose = %{version}-%{release}
-Provides:	python%{py3_ver}dist(nose) = %{version}-%{release}
+Provides:	python%{py3_ver}dist(nose) = %{version}
 Conflicts:	python-nose < 1.3.7-15
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
